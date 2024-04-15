@@ -4,8 +4,15 @@
   "url": "https://github.com/hqweay/siyuan-send-to",
   "version": "0.0.1",
   "minAppVersion": "3.0.0",
-  "backends": ["windows", "linux", "darwin"],
-  "frontends": ["desktop", "desktop-window"],
+  "backends": [
+    "windows",
+    "linux",
+    "darwin"
+  ],
+  "frontends": [
+    "desktop",
+    "desktop-window"
+  ],
   "displayName": {
     "en_US": "发送到",
     "zh_CN": "发送到"
@@ -21,5 +28,7 @@
   "funding": {
     "custom": []
   },
-  "keywords": ["plugin"]
+  "keywords": [
+    "plugin"
+  ]
 }
