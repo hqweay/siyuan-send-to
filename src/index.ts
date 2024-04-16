@@ -7,7 +7,7 @@ import CardView from "@/pages/card.svelte";
 
 const defaultConfig = {
   InputArea:
-    "发送到提醒事项====shortcuts://run-shortcut?name=从剪贴板添加提醒事项\nGoogle 搜索====https://www.google.com/search?q=${content}",
+    "发送到提醒事项====shortcuts://run-shortcut?name=从剪贴板添加提醒事项\nGoogle 搜索====https://www.google.com/search?q=${content}\nGemini 总结====shortcuts://run-shortcut?name=Gemini 总结剪贴板",
   isToClipboard: true,
   separator: "",
 };
@@ -68,7 +68,20 @@ export default class PluginSample extends Plugin {
           console.log("文本已成功复制到剪贴板");
         },
         function (err) {
-          console.error("写入剪贴板时出错:", err);
+          // 创建一个临时输入元素
+          const tempInput = document.createElement("input");
+          tempInput.value = resultText;
+          document.body.appendChild(tempInput);
+
+          // 选中临时输入元素的内容
+          tempInput.select();
+          tempInput.setSelectionRange(0, 99999); // 兼容移动端
+
+          // 执行复制操作
+          document.execCommand("copy");
+
+          // 移除临时输入元素
+          document.body.removeChild(tempInput);
         }
       );
     } else {
